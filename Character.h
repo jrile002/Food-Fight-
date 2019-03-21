@@ -7,7 +7,7 @@ const int CHAR_NAME_SIZE = 15;
 struct Character{
      private:
           // Data
-          string name;
+          std::string name;
           int base_health;
           int base_AP;
           int current_health;
@@ -15,7 +15,7 @@ struct Character{
           int retreats;
      public:
           // Constructor
-          Character(string name, int health){
+          Character(std::string name, int health){
                this->name = name;
                this->base_health = (health >= 0) ? health : 0;
                this->current_health = this->base_health;
@@ -33,7 +33,7 @@ struct Character{
           inline bool has_retreats(){
                return (this->retreats > 0);
           }
-          inline string get_name(){
+          inline std::string get_name(){
                return this->name;
           }
           inline int get_current_health(){
@@ -79,8 +79,8 @@ struct Character{
                }
           }
           // Printing
-          string str_character_name(){
-               string temp = this->name;
+          std::string str_character_name(){
+               std::string temp = this->name;
                int range = temp.size();
                for (unsigned i = 0; i < (CHAR_NAME_SIZE - range) / 2; ++i){
                     temp = " " + temp + " ";
@@ -90,8 +90,8 @@ struct Character{
                }
                return temp;
           }
-          string str_character_health(){
-               string temp = to_string(this->current_health);
+          std::string str_character_health(){
+               std::string temp = std::to_string(this->current_health);
                while (temp.length() < 3){
                     temp = "0" + temp;
                }

@@ -1,8 +1,8 @@
+#include "Board.h"
 #include "Creature.h"
 #include "Character.h"
 #include "Deck.h"
 #include "test.h"
-#include "Board.h"
 #include "Menu.h"
 
 int main(){

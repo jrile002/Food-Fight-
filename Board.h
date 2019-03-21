@@ -1,15 +1,19 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
-const string CMD_MESSAGE = "Choose from the following commands:\n   1)\"r [#]\" to retreat creature from lane [#]\n   2)\"p [#1] [#2]\" to play card [#1] on lane [#2]\n   3) \"e\" to end your turn\n     Command: ";
-const string HAND_HEADER = "#-------------------#     #-------------------#     #-------------------#     #-------------------#     #-------------------#";
-const string HAND_BUFFER = "|-------------------|     |-------------------|     |-------------------|     |-------------------|     |-------------------|";
-const string HAND_FOOTER = "#------Hand 01------#     #------Hand 02------#     #------Hand 03------#     #------Hand 04------#     #------Hand 05------#";
-const string LANE_SPACES = "                          "; 
-const string LANE_HEADER = LANE_SPACES + "#-------------------#     #-------------------#     #-------------------#";
-const string LANE_BUFFER = LANE_SPACES + "|-------------------|     |-------------------|     |-------------------|";
-const string LANE_FOOTER = LANE_SPACES + "#------Lane 01------#     #------Lane 02------#     #------Lane 03------#";
-const string SPACES = "     ";
+#include <string>
+#include "Character.h"
+#include "Deck.h"
+
+const std::string CMD_MESSAGE = "Choose from the following commands:\n   1)\"r [#]\" to retreat creature from lane [#]\n   2)\"p [#1] [#2]\" to play card [#1] on lane [#2]\n   3) \"e\" to end your turn\n     Command: ";
+const std::string HAND_HEADER = "#-------------------#     #-------------------#     #-------------------#     #-------------------#     #-------------------#";
+const std::string HAND_BUFFER = "|-------------------|     |-------------------|     |-------------------|     |-------------------|     |-------------------|";
+const std::string HAND_FOOTER = "#------Hand 01------#     #------Hand 02------#     #------Hand 03------#     #------Hand 04------#     #------Hand 05------#";
+const std::string LANE_SPACES = "                          "; 
+const std::string LANE_HEADER = LANE_SPACES + "#-------------------#     #-------------------#     #-------------------#";
+const std::string LANE_BUFFER = LANE_SPACES + "|-------------------|     |-------------------|     |-------------------|";
+const std::string LANE_FOOTER = LANE_SPACES + "#------Lane 01------#     #------Lane 02------#     #------Lane 03------#";
+const std::string SPACES = "     ";
 
 #define GOLD "\x1b[43m"
 
@@ -24,10 +28,10 @@ struct Board{
           // Prints player statistics and cards in player's hand
           void print_hand(Character* player, Deck* deck){
                // For printing the player's name, health, and AP
-               string stats, hand_name, hand_flavor, hand_attack, hand_shield;
+               std::string stats, hand_name, hand_flavor, hand_attack, hand_shield;
                stats = "   " + player->str_character_name() + "   " + SPACES;
                stats += "Health: " + player->str_character_health() + "          " + SPACES;
-               stats += "AP: " + to_string(player->get_current_AP());
+               stats += "AP: " + std::to_string(player->get_current_AP());
                // For printing cards in player's hand
                for (unsigned i = 0; i < 5; ++i){
                     hand_name += deck->str_name("hand",i);
@@ -48,10 +52,10 @@ struct Board{
           
           // Prints cards in player's lane
           void print_lane(Deck* deck){
-               string lane_name = LANE_SPACES;
-               string lane_flavor = LANE_SPACES;
-               string lane_attack = LANE_SPACES;
-               string lane_shield = LANE_SPACES;
+               std::string lane_name = LANE_SPACES;
+               std::string lane_flavor = LANE_SPACES;
+               std::string lane_attack = LANE_SPACES;
+               std::string lane_shield = LANE_SPACES;
                
                for (unsigned i = 0; i < 3; ++i){
                     lane_name += deck->str_name("lane",i);
@@ -88,7 +92,7 @@ struct Board{
           }
           
           // When the game is over, return name of the winner (otherwise returns "Tie")
-          string get_winner(){
+          std::string get_winner(){
                this->print_board();
                if (!(this->p1->has_health()) && !(this->p2->has_health())){ 
                     return "Tie";
@@ -170,7 +174,7 @@ struct Board{
           // Attack, if possible
           // Discard the cards in your hand
           void play_turn_helper(Character* player, Deck* deck){
-               string command;
+               std::string command;
                player->set_retreats(1);
                player->set_current_AP(2);
                
@@ -266,7 +270,7 @@ struct Board{
                     //system("tput reset");
                     this->play_turn();
                }
-               string winner = this->get_winner();
+               std::string winner = this->get_winner();
                if (winner == "Tie"){
                     printf("\n\nMatch ended in a tie!\n\n");
                }
