@@ -6,7 +6,7 @@
 #include <cstdio>
 using namespace std;
 
-const int CREAT_NAME_SIZE = 17;
+const unsigned int CREAT_NAME_SIZE = 17;
 const string HEADER = "#-------------------#";
 const string FILLER = "|-------------------|";
 const double SUPER_EFF = 1.5;

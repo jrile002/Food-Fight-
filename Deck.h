@@ -110,7 +110,9 @@ struct Deck{
                     if (successful){
                          this->discard_pile.insert(this->discard_pile.begin(), this->hand[hand_index]);
                          this->hand[hand_index] = new Creature();
+			 return true;
                     }
+		    return false;
                }
                else{
                     printf("\nERROR: Card type does not exist\n");
@@ -199,7 +201,7 @@ struct Deck{
           }
           
           // Printing Functions
-          string str_name(string label, int index){
+          string str_name(string label, unsigned int index){
                if (label == "lane"){
                     if (index < this->lane.size()){
                          return this->lane[index]->print_data(1);
@@ -221,7 +223,7 @@ struct Deck{
                }
                
           }
-          string str_flavor(string label, int index){
+          string str_flavor(string label, unsigned int index){
                if (label == "lane"){
                     if (index < this->lane.size()){
                          return this->lane[index]->print_data(2);
@@ -242,7 +244,7 @@ struct Deck{
                     return "FIXME";     
                }
           }
-          string str_attack(string label, int index){
+          string str_attack(string label, unsigned int index){
                if (label == "lane"){
                     if (index < this->lane.size()){
                          return this->lane[index]->print_data(4);
@@ -263,7 +265,7 @@ struct Deck{
                     return "FIXME - DECK::STR_ATTACK";     
                }
           }
-          string str_shield(string label, int index){
+          string str_shield(string label, unsigned int index){
                if (label == "lane"){
                     if (index < this->lane.size()){
                          return this->lane[index]->print_data(5);

@@ -2,7 +2,7 @@
 #define __CHARACTER_H__
 
 #include <string>
-const int CHAR_NAME_SIZE = 15;
+const unsigned int CHAR_NAME_SIZE = 15;
 
 struct Character{
      private:
