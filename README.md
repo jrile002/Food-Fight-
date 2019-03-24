@@ -15,8 +15,8 @@ A food-based trading card game
 ## Food Creatures
 + Food Creatures are one type of playable card.
 + Food Creatures may be played on any of the player's 3 lanes if that lane is empty.
-+ At the end of a player's turn, their Food Creatures will attempt to inflict damage on the opponent.
-+ Food Creatures can only inflict direct damage to the opponent if there are no opposing Food Creatures in their lane; otherwise, the opposing Food Creatures take the damage.
++ At the end of a player's turn, their Food Creatures will attempt to inflict filth damage on the opponent.
++ Food Creatures can only inflict direct filth damage to the opponent if there are no opposing Food Creatures in their lane; otherwise, the opposing Food Creatures take the damage.
 + Food Creatures will fight back if directly attacked by opposing Food Creatures. 
 
 ## Condiments
